@@ -101,6 +101,7 @@ p {
   background-color: transparent;
   color: var(--color-white);
   transition: all var(--animation-duration) ease-in-out;
+  z-index: 1;
 }
 
 #navbar.navbar--dark {
@@ -240,7 +241,7 @@ p {
 
 /* Skills */
 #skills {
-  background-color: var(--color-yellow);
+  background-color: var(--color-yellow]);
 }
 
 .skillset {
