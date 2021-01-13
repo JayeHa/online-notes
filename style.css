@@ -130,6 +130,10 @@ p {
   background-color: var(--color-dark-pink);
 }
 
+.navbar__menu__item.active {
+  border-color: white;
+}
+
 .navbar__toggle-btn {
   position: absolute;
   top: 24px;
