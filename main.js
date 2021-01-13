@@ -22,6 +22,7 @@ navbarMenu.addEventListener('click', (event) => {
   navbarMenu.classList.remove('open');
   console.log(event.target.dataset.link);
   scrollIntoView(link);
+  selectNavItem(target);
 });
 
 //Navbar toggle button for small screen
@@ -128,9 +129,22 @@ const observerCallback = (entries, observer) => {
       } else {
         selectedNavIndex = index -1;
       }
+      // selectNavItem(navItems[selectedNavIndex]);
     }
   })
 }
 
 const observer = new IntersectionObserver(observerCallback, observerOptions);
 sections.forEach(section => observer.observe(section));
+
+window.addEventListener('wheel', () => {
+  if(window.scrollY === 0)
+  {
+    selectedNavIndex = 0;
+  }
+  else if(Math.round(window.scrollY + window.innerHeight) >= document.body.clientHeight)
+  {
+    selectedNavIndex= navItems.length - 1;
+  }
+  selectNavItem(navItems[selectedNavIndex]);
+});
