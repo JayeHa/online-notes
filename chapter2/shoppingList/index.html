@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shopping list</title>
+    <script src="https://kit.fontawesome.com/b54cf3b192.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: rgb(194, 203, 219);
+            box-sizing: border-box;
+        }
+        
+        .shopping_app {
+            width: 40%;
+            height: 900px;
+            margin: auto;
+            margin-top: 80px;
+            border: 1px solid red;
+            border-radius: 3%;
+        }
+        
+        .title {
+            height: 80px;
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="shopping_app">
+        <div class="title">Shopping List</div>
+        <div class="list_box">
+            <ul>
+                <li class="list_title">우유 <span class="list_remove"><i class="fas fa-trash-alt"></i></span></li>
+            </ul>
+        </div>
+        <div class="plus_box">
+            <button onclick="fnc_addList()"><i class="fas fa-plus-circle"></i></button>
+        </div>
+    </section>
+
+
+    <script>
+    </script>
+
+</body>
+
+</html>
