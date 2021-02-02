@@ -29,13 +29,15 @@
     <script>
       document.addEventListener('wheel', event => {
         console.log('scrolling');
-        event.preventDefault();
-      });
+        // event.preventDefault(); //passive
+      },
+      // {passive:false} //기본적으로 pasive가 true로 설정된 아이는 false로 설정하는 것을 피하자
+      );
       const checkbox = document.querySelector('input');
       checkbox.addEventListener('click', event => {
         // long
         console.log('checked');
-        event.preventDefault();
+        event.preventDefault(); //체크박스가 적용되지 않음.
       });
     </script>
   </body>
