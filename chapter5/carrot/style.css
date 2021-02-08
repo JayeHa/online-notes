@@ -1,0 +1,61 @@
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    height: 500px;
+    background: url(img/background.png) center/cover;
+}
+
+.game__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.game__button {
+    width: 60px;
+    height: 60px;
+    background-color: wheat;
+    border: 4px solid black;
+    font-size: 24px;
+    transition: transform 300ms ease-in;
+}
+
+.game__button:hover {
+    transition: scale(1.1);
+}
+
+.game__timer {
+    width: 100px;
+    background-color: white;
+    text-align: center;
+    border: 5px solid black;
+    border-radius: 20px;
+    font-size: 32px;
+    margin-top: 8px;
+}
+
+.game__score {
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    font-size: 46px;
+    border-radius: 50%;
+    border: 3px solid black;
+    background-color: darksalmon;
+    color: white;
+    margin-top: 8px;
+}
+
+.game__field {
+    width: 100%;
+    height: 100%;
+    background-color: blue
+}
