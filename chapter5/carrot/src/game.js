@@ -1,7 +1,35 @@
 import Field from './field.js';
 import * as sound from './sound.js';
 
-export default class Game {
+// Builder Pattern
+export default class GameBuilder {
+    withGameDuration(duration) {
+        this.gameDuration = duration;
+        return this;
+        // 우리가 array배열에서 map이나 reduce 등을 쓰면 array자체를 리턴하기 때문에 메소드를 체이닝해서 계속 호출할 수가 있었죠? 그거랑 똑같이 할거예요.
+    }
+
+    withCarrotCount(num) {
+        this.carrotCount = num;
+        return this;
+    }
+
+    withBugCount(num) {
+        this.bugCount = num;
+        return this;
+    }
+
+    build() {
+        console.log(this);
+        return new Game(
+            this.gameDuration, //프리티어가 할 줄에 놔두지 않도록, 그리고 carrotCount와 모듈안에 함께 있기 때문에 우리가 build를 쓰면서 생성자의 정의를 볼 수 있기 때문에
+            this.carrotCount,
+            this.bugCount
+        );
+    }
+}
+
+class Game {
     constructor(gameDuration, carrotCount, bugCount) {
         this.gameDuration = gameDuration;
         this.carrotCount = carrotCount;
