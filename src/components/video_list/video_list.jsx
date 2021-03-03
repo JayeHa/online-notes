@@ -7,7 +7,6 @@ const VideoList = (props) => (
         <VideoItem key={video.id} video={video}/>
         ))}
     </ul>
-            
     );
 
 export default VideoList;
