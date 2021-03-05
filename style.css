@@ -11,3 +11,20 @@
 * {
   box-sizing: border-box;
 }
+
+.select_bar{
+  display: flex;
+  list-style: none;
+}
+
+.select_item img{
+  width: 2.5rem;
+}
+
+.select_item_color{
+  
+}
+
+.select_item_blue{
+  background-color: var(--color-blue);
+}
