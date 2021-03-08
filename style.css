@@ -12,9 +12,30 @@
   box-sizing: border-box;
 }
 
+body{
+  background-color: rgb(60, 59, 63);
+}
+
+ul{
+  list-style: none;
+}
+
+.logo{
+  margin-top: 3rem;
+}
+
+.logo img{
+  display: block;
+  margin: auto;
+}
+
 .select_bar{
   display: flex;
-  list-style: none;
+}
+
+.select_item{
+  margin: 0.7rem;
+  cursor: pointer;
 }
 
 .select_item img{
@@ -22,9 +43,32 @@
 }
 
 .select_item_color{
-  
+  width: 4rem;
+  text-align: center;
+  padding-top: 0.6rem;
+  border-radius: 5px;
 }
 
 .select_item_blue{
   background-color: var(--color-blue);
+}
+
+.select_item_pink{
+  background-color: var(--color-pink);
+}
+
+.select_item_yellow{
+  background-color: var(--color-yellow);
+}
+
+.item{
+  border-radius: 5px;
+  background-color: var(--color-white);
+  padding: 0.5rem;
+  display: flex;
+}
+
+.item img{
+  width: 2.5rem;
+  height: 2.5rem;
 }
