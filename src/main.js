@@ -34,12 +34,18 @@ function createHTMLString(item){
     `;
 }
 
+function setEventListeners(items){
+    const btns = document.querySelector('.btns');
+    btns.addEventListener("click",()=>{
+        console.log('hi');
+    })
+}
 
 // main
 loadItems()
     .then(items => {
         console.log(items);
         displayItems(items);
-        // setEventListeners(items);
+        setEventListeners(items);
     })
     .catch(console.log())
