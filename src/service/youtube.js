@@ -1,4 +1,3 @@
-import axios from 'axios';
 
 class Youtube {
     constructor(httpClient){
@@ -10,7 +9,7 @@ class Youtube {
             params: {
                 part: 'snippet',
                 chart: 'mostPopular',
-                maxResult: 25,
+                maxResults: 25,
             }
         });
         return response.data.items;
@@ -20,7 +19,7 @@ class Youtube {
         const response = await this.youtube.get('search', {
             params:{
                 part: 'snippet',
-                maxResult: 25,
+                maxResults: 25,
                 type: 'video',
                 q: query,
             },
