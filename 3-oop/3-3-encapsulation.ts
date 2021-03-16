@@ -39,8 +39,33 @@
     }
 
     const maker = CoffeeMaker.makeMachine(32);
-    maker.fillCoffeeBeans(3);
+    maker.fillCoffeeBeans(32);
 
+    class User {
+        get fullName(): string{
+            return `${this.firstName} ${this.lastName}`;
+        }
 
+        private internalAge = 4;
+        get age(): number{
+            return this.internalAge;
+        }
+
+        set age(num: number){
+            if(num < 0){
+                throw new Error('오류'); //유효성검사 가능
+            }
+            this.internalAge = num;
+        }
+
+        constructor(public firstName:string, private lastName:string){ //이처럼 생성자에 접근제어자를 설정해두면 바로 멤버변수로 설정이 됩니다.
+        }
+    }
+    const user = new User('Steve', 'jobs');
+    console.log(user.fullName);
+    user.firstName = 'Ellie';
+    console.log(user.fullName);
+
+    user.age = 6;
     
 }
