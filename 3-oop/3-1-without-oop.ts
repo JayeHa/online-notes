@@ -1,38 +1,25 @@
+{
+    type CoffeeCup = {
+        shots: number;
+        hasMilk: boolean;
+    };
 
-// const items = {
-//     coffeeBean : 10,
-//     coffee: 0
-// }
+    const BEANS_GRAMM_PER_SHOT: number = 7;
 
-let coffeeBean:number = 10;
-
-function makeCoffee(shot:number){
-    if(shot<=0){
-        console.log('샷을 넣어주세요');
-        return null
+    let coffeeBeans: number = 0;
+    function makeCoffee(shots: number): CoffeeCup {
+        if(coffeeBeans < shots * BEANS_GRAMM_PER_SHOT){
+            throw new Error('Not enough coffee beans!');
+        }
+        coffeeBeans -= shots * BEANS_GRAMM_PER_SHOT;
+        return {
+            shots,          //key와 value의 이름이 동일하다면 key생략가능
+            hasMilk: false,
+        };
     }
 
-    if(coffeeBean <= shot){
-        console.log('커피콩이 부족합니다.');
-        return null
-    }
-
-    coffeeBean = coffeeBean - shot
-    let coffee = {"shot": shot}
-
-    return coffee
-
+    coffeeBeans += 3 * BEANS_GRAMM_PER_SHOT;
+    const coffee = makeCoffee(2);
+    console.log(coffee);
+    
 }
-
-let coffee = makeCoffee(1);
-console.log(coffeeBean)
-console.log(coffee)
-coffee = makeCoffee(3);
-console.log(coffeeBean)
-console.log(coffee)
-coffee = makeCoffee(9);
-console.log(coffeeBean)
-console.log(coffee)
-coffee = makeCoffee(0);
-console.log(coffeeBean)
-console.log(coffee)
