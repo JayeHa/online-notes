@@ -4,16 +4,26 @@
         hasMilk: boolean;
     };
 
+    // public
+    // private
+    // protected
     class CoffeeMaker{
-        static BEANS_GRAMM_PER_SHOT: number = 7;   // class level
-        coffeeBeans: number = 0;                   // instance(object) level
+        private static BEANS_GRAMM_PER_SHOT: number = 7;   // class level
+        private coffeeBeans: number = 0;                   // instance(object) level
         
-        constructor(coffeeBeans: number) {
+        private constructor(coffeeBeans: number) {
             this.coffeeBeans = coffeeBeans;
         }
 
         static makeMachine(coffeeBeans: number): CoffeeMaker {
             return new CoffeeMaker(coffeeBeans)
+        }
+
+        fillCoffeeBeans(beans: number){
+            if(beans < 0){
+                throw new Error('value for beans should be greater than 0');
+            }
+            this.coffeeBeans += beans;
         }
 
         makeCoffee(shots: number): CoffeeCup {
@@ -28,12 +38,8 @@
         }
     }
 
-    const maker = new CoffeeMaker(32);
-    console.log(maker);
-    const maker2 = new CoffeeMaker(14);
-    console.log(maker2);
-    const maker3 = CoffeeMaker.makeMachine(3);
-    console.log(maker3);
+    const maker = CoffeeMaker.makeMachine(32);
+    maker.fillCoffeeBeans(3);
 
 
     
