@@ -6,10 +6,15 @@
 
     interface CoffeeMaker { // interface
         makeCoffee(shots: number): CoffeeCup;
-
     }
 
-    class CoffeeMachine implements CoffeeMaker { //implements
+    interface CommercialCoffeeMaker{
+        makeCoffee(shots: number): CoffeeCup;
+        fillCoffeeBeans(beans: number): void;
+        clean(): void;
+    }
+
+    class CoffeeMachine implements CoffeeMaker, CommercialCoffeeMaker {
         private static BEANS_GRAMM_PER_SHOT: number = 7;   // class level
         private coffeeBeans: number = 0;                   // instance(object) level
         
@@ -26,6 +31,10 @@
                 throw new Error('value for beans should be greater than 0');
             }
             this.coffeeBeans += beans;
+        }
+
+        clean(){
+            console.log('cleaning the machine..!');
         }
 
         private grindBeans(shots: number){
@@ -57,14 +66,20 @@
         }
     }
 
+    
     const maker: CoffeeMachine = CoffeeMachine.makeMachine(32);
     maker.fillCoffeeBeans(32);
     maker.makeCoffee(2);
 
-    const maker2: CoffeeMaker = CoffeeMachine.makeMachine(32);
-    maker2.fillCoffeeBeans(32); // 커피콩을 채우는 API는 CoffeeMaker라는 인터페이스에는 존재하지 않습니다. 그래서 인터페이스에 없는 이 함수를 사용할 수가 없어요.
-    // 그래서 이 인터페이스를 이용하면 내가 얼마만큼의 행동을 약속할 건지, 보장할건지, 허용할건지 결정할 수 있어요.
+    const maker2: CommercialCoffeeMaker = CoffeeMachine.makeMachine(32);
+    maker2.fillCoffeeBeans(32);
     maker2.makeCoffee(2);
+    maker2.clean();
 
+    // makeMachine이라는 걸 이용하면 CoffeeMachine이라는 오브젝트를 리턴하게 되는데요.
+    // 이렇게 CoffeeMachine이라는 타입으로 오브젝트를 받게 되면
+    // 이 오브젝트 안에 있는 퍼블릭 함수들을 다 접근가능하지만
+    // 이렇게 인터페이스로 다시 타입을 제한해서 받게 되면
+    // 인터페이스에서 정의된 아이들만 사용할 수가 있습니다.
 
 }
