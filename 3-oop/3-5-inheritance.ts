@@ -4,7 +4,7 @@
         hasMilk: boolean;
     };
 
-    interface CoffeeMaker { // interface
+    interface CoffeeMaker { 
         makeCoffee(shots: number): CoffeeCup;
     }
 
@@ -91,9 +91,7 @@
     const amateur = new AmateurUser(maker);
     const pro = new ProBarista(maker);
     
-    console.log('--- 아마추어');
     amateur.makeCoffee();
-    console.log('--- 프로');
     pro.makeCoffee();
 
 }
