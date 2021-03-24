@@ -1,3 +1,4 @@
+{
 interface Stack {
     readonly size: number;
     push(value: string): void;
@@ -45,3 +46,5 @@ while(stack.size !== 0) {
     console.log(stack.pop());    
 }
 // stack.pop();
+
+}
