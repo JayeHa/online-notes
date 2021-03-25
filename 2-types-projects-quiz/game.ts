@@ -4,7 +4,7 @@
 
 const position = {x : 0, y : 0};
 
-function move(direction:'up' | 'down' | 'left' | 'right'){
+function move(direction:'up' | 'down' | 'left' | 'right'|'he'){
     switch(direction){
         case 'up': 
             position.y += 1; 
@@ -18,7 +18,9 @@ function move(direction:'up' | 'down' | 'left' | 'right'){
         case 'right': 
             position.x += 1; 
             break;
-        default: throw new Error('unknown direction');
+        default: 
+            const invalid: never = direction;
+            throw new Error(`unknown direction: ${invalid}`);
     }
 }
 
