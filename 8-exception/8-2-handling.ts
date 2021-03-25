@@ -1,6 +1,10 @@
+{
+class TimeoutError extends Error{}
+class OfflineError extends Error{}
+
 class NetworkClient {
    tryConnect(): void {
-      throw new Error('no network!');
+      throw new OfflineError('no network!');
    }
 }
 
@@ -19,9 +23,11 @@ class App{
    run() {
       try{
          this.userService.login();
-      } catch(error){
+      } catch(error){ //any타입..😭
          // show dialog to user
-         console.log('네트워크가 없어. 너의 네트워크를 한 번 확인하고 다시 시도해봐');  
+         if(error instanceof OfflineError){
+            // TypeScript에서 구현된 catch()에는 어떠한 타입정보도 전달되지 않아서 instanceOf를 사용할 수 없어요 😭
+         }
       }
    };
 }
@@ -30,8 +36,4 @@ const client = new NetworkClient();
 const service = new UserService(client);
 const app = new App(service);
 app.run();
-
-// ❗ 메인포인트
-// 예상하지 못한 에러가 발생하는 것이 있다면 내가 이것을 try catch handling할 때
-// 내가 여기서 처리하는 것이 과연 의미있는 처리를 할 수 있을까라고 생각해보시고요
-// 가능한 가장 우아하게 처리할 수 있는 곳에서 catch를 하는 것이 중요합니다.
+}
