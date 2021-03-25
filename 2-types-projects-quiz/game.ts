@@ -19,8 +19,9 @@ function move(direction:'up' | 'down' | 'left' | 'right'|'he'){
             position.x += 1; 
             break;
         default: 
-            const invalid: never = direction;
-            throw new Error(`unknown direction: ${invalid}`);
+            // const invalid: never = direction;
+            // throw new Error(`unknown direction: ${invalid}`);
+            throw new Error(`unknown direction`);
     }
 }
 
