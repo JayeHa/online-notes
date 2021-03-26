@@ -1,3 +1,4 @@
+{
 type PositionType = {
    x: number;
    y: number;
@@ -70,3 +71,4 @@ type NumberType = number;
 type Direction = 'left' | 'right';
 
 // 그 외 뒤에 이어지는 유틸리티나 맵타입이나 인덱스타입 이용가능
+}
