@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>MOTION</title>
+   <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+   <header>
+      <h1 class="title">MOTION</h1>
+      <ul class="header__categories">
+         <li><button class="category__btn">IMAGE</button></li>
+         <li><button class="category__btn">VIDEO</button></li>
+         <li><button class="category__btn">NOTE</button></li>
+         <li><button class="category__btn">TASK</button></li>
+      </ul>
+   </header>
+
+   <section class="section">
+      <ul>
+         <li class="item__container media_type">
+            <div class="item__media">
+               <img src="https://picsum.photos/350/200" alt="">
+            </div>
+            <div class="item__info">
+               <div class="item__title">Image</div>
+               <div class="item__removeBtn">x</div>
+            </div>
+         </li>
+         <li class="item__container note_type">
+            <div class="item__info">
+               <div class="item__title">Image</div>
+               <div class="item__discription">Image</div>
+               <div class="item__removeBtn">x</div>
+            </div>
+         </li>
+      </ul>
+   </section>
+
+   <section class="modal_bg " >
+   <div class="input_modal" >
+      <div class="item__removeBtn">x</div>
+      <form action="">
+         <label>
+            <div>Title</div>
+            <input type="text" name="title" id="">
+         </label>
+         <label> 
+            <div>URL</div>
+            <input type="text" name="url" id="">
+         </label>
+         <div style="text-align: right;">
+            <button type="submit">ADD</button>
+         </div>
+      </form>
+   </div>
+</section>
+   <footer>
+      Dream Coding Academy
+   </footer>
+</body>
+</html>
