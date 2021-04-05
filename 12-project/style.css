@@ -14,9 +14,9 @@
 }
 
 body{
-   background: url(./img/background.png)  center/cover;
+   background: url(./img/background.png)  center/cover no-repeat;
    width: 40rem;
-   height: 1vh;
+   height: 100vh;
    margin: auto;
 }
 
