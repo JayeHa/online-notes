@@ -1,18 +1,18 @@
 import { BaseComponent } from "../../component.js";
 
-export class NoteCompoenet extends BaseComponent<HTMLUListElement>{
-   constructor(title: string, context: string){
+export class NoteCompoenet extends BaseComponent<HTMLElement>{
+   constructor(title: string, body: string){
       super(`
          <section class='note'>
          <h2 class="note__title"></h2>   
-         <p class="note__context"></p>
+         <p class="note__body"></p>
          </section>
       `);
 
-      const titleElement = this.element.querySelector('.note__title')! as HTMLElement;
+      const titleElement = this.element.querySelector('.note__title')! as HTMLHeadElement;
       titleElement.textContent = title;
 
-      const contextElement = this.element.querySelector('.note__context')! as HTMLParagraphElement;
-      contextElement.textContent = context;
+      const bodyElement = this.element.querySelector('.note__body')! as HTMLParagraphElement;
+      bodyElement.textContent = body;
    }
 }
