@@ -8,11 +8,28 @@ export class VideoCompoent extends BaseComponent<HTMLElement>{
             </section>`);
 
       const iframe = this.element.querySelector('.video__iframe')! as HTMLIFrameElement;
-      iframe.src = 'https://youtube.com/embed/F9NkdprdcdQ'; // url -> videoId -> embed
-      url;
+      iframe.src = this.convertToEmbeddedURL(url);
 
       const titleElement = this.element.querySelector('.video__title')! as HTMLHeadingElement;
-      titleElement.textContent = title;
+      titleElement.textContent = title;      
+   }
 
+   // input
+   // https://www.youtube.com/watch?v=4RiI-JZkeLQ
+   // https://youtu.be/4RiI-JZkeLQ
+
+   // output
+   // https://www.youtube.com/embed/4RiI-JZkeLQ
+
+   // 정규표현식 Regex
+   private convertToEmbeddedURL(url: string): string {
+      const regExp = /^(?:https?:\/\/)?(?:www\.)?(?:(?:youtube.com\/(?:(?:watch\?v=)|(?:embed\/))([a-zA-Z0-9-]{11}))|(?:youtu.be\/([a-zA-Z0-9-]{11})))/;
+      const match = url.match(regExp);
+      console.log(match)
+      const videoId = match? match[1] || match[2] : undefined;
+      if(videoId) {
+         return `https://www.youtube.com/embed/${videoId}`;
+      }
+      return url;
    }
 }
