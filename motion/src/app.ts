@@ -8,7 +8,7 @@ import { VideoCompoent } from './components/page/item/video.js';
 class App {
    private readonly page: Component & Composable;
    constructor(appRoot: HTMLElement) {
-      this.page = new PageCompoent(PageItemComponent); // 8. 이런식으로 'PageComponent야, 너가 만들 수 있는 PageItemComponent는 바로 이 클래스야'라고 말해줄 수 있고요
+      this.page = new PageCompoent(PageItemComponent); 
       this.page.attachTo(appRoot);
 
       const image = new ImageComponent('Image Title' , 'https://picsum.photos/600/300');
