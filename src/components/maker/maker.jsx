@@ -12,18 +12,18 @@ const Maker = ({authService}) => {
             id: '1',
             name: 'Eliie',
             company: 'Samsung',
-            theme: 'light',
+            theme: 'dark',
             title: 'Software Engineer',
             email: 'ellie@gmail.com',
             message: 'go for it',
             fileName: 'ellie',
-            fileURL: 'ellie.png'
+            fileURL: null
         },
         {
             id: '2',
             name: 'Eliie2',
             company: 'Samsung',
-            theme: 'light',
+            theme: 'colorful',
             title: 'Software Engineer',
             email: 'ellie@gmail.com',
             message: 'go for it',
@@ -39,7 +39,7 @@ const Maker = ({authService}) => {
             email: 'ellie@gmail.com',
             message: 'go for it',
             fileName: 'ellie',
-            fileURL: 'ellie.png'
+            fileURL: null
         },
     ]);
     const history = useHistory();
