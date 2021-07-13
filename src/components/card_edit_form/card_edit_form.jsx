@@ -2,8 +2,8 @@ import React from 'react';
 import Button from '../button/button';
 import styles from './card_edit_form.module.css'
 
-const CardEditForm = ({FileInput, card, updateCard, deleteCard}) => {
-    const {name, company, title, email, message, theme, fileName, fileURL} = card;
+const CardEditForm = ({FileInput, card, updateCard, deleteCard}) => { 
+    const {name, company, title, email, message, theme, fileName} = card; 
 
     const onFileChange = file => {
         updateCard({
