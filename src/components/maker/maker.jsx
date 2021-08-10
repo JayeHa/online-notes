@@ -27,6 +27,23 @@ const Maker = ({FileInput, authService, cardRepository}) => {
         });
     });
 
+    const createOrUpdateCard = card => {
+        setCards(cards => {
+            const updated = { ...cards };
+            updated[card.id] = card;
+            return updated;
+        });
+        cardRepository.saveCard(userId, card);
+    };
+    
+    const deleteCard = card => {
+        setCards(cards => {
+            const updated = { ...cards };
+            delete updated[card.id];
+            return updated;
+        });
+        cardRepository.removeCard(userId, card);
+    };
 
 
     return(
