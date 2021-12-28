@@ -1,0 +1,13 @@
+// ✨
+function update(rawData) {
+  // prep data...
+  db.update(rawData);
+  // more code ...
+  return data;
+}
+
+function print(data) {
+  // get printer...
+  // more code ...
+  printer.print(data);
+}
