@@ -1,27 +1,57 @@
 const Calculator = require('../calculator.js');
 
-test('test', () => {
-  const calculator = new Calculator();
-  expect(calculator).toEqual({ value: 0 });
+describe('Calculator', () => {
+  let cal;
+  beforeEach(() => {
+    cal = new Calculator();
+  }); // 각각의 테스트는 개별적으로 동작해야함
 
-  calculator.set(10);
-  expect(calculator).toEqual({ value: 10 });
+  it('init with 0', () => {
+    expect(cal.value).toBe(0);
+  });
 
-  calculator.add(25);
-  expect(calculator).toEqual({ value: 35 });
+  it('sets', () => {
+    cal.set(9);
+    expect(cal.value).toBe(9);
+  });
 
-  // calculator.add(100);
-  // expect(calculator).toThrow(Error);
+  it('clear', () => {
+    cal.set(9);
+    cal.clear();
+    expect(cal.value).toBe(0);
+  });
 
-  calculator.subtract(5);
-  expect(calculator).toEqual({ value: 30 });
+  it('add', () => {
+    cal.set(1);
+    cal.add(2);
+    expect(cal.value).toBe(3);
+  });
 
-  calculator.multiply(2);
-  expect(calculator).toEqual({ value: 60 });
+  it('subtracts', () => {
+    cal.subtract(1);
+    expect(cal.value).toBe(-1);
+  });
 
-  calculator.divide(3);
-  expect(calculator).toEqual({ value: 20 });
+  it('multiplies', () => {
+    cal.set(5);
+    cal.multiply(4);
+    expect(cal.value).toBe(20);
+  });
 
-  calculator.clear();
-  expect(calculator).toEqual({ value: 0 });
+  describe('divides', () => {
+    it('0 / 0 === NaN', () => {
+      cal.divide(0);
+      expect(cal.value).toBe(NaN);
+    });
+    it('1 / 0 === Infinity', () => {
+      cal.set(1);
+      cal.divide(0);
+      expect(cal.value).toBe(Infinity);
+    });
+    it('4 / 4 === 1', () => {
+      cal.set(4);
+      cal.divide(4);
+      expect(cal.value).toBe(1);
+    });
+  });
 });
