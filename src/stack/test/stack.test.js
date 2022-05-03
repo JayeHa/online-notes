@@ -47,20 +47,4 @@ describe('Stack', () => {
       expect(stack.size()).toBe(2);
     });
   });
-
-  // it('push stack', () => {
-  //   stack.push(1);
-  //   expect(stack.value[0]).toBe(1);
-
-  //   stack.push(2);
-  //   expect(stack.value[1]).toBe(2);
-  // });
-
-  // it('pop stack', () => {
-  //   stack.push(1);
-  //   stack.push(2);
-
-  //   stack.pop();
-  //   expect(stack.value).toEqual([1]);
-  // });
 });
