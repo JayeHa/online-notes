@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shopping list</title>
+    <script src="https://kit.fontawesome.com/b54cf3b192.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: rgb(194, 203, 219);
+            box-sizing: border-box;
+        }
+        
+        .shopping_app {
+          position: relative;
+            width: 40%;
+            height: 500px;
+            margin: auto;
+            margin-top: 80px;
+            border-radius: 3%;
+            background-color: rgba(245, 245, 245, 0.726);
+        }
+        
+        .title {
+            height: 50px;
+            background-color: rgb(210, 100, 237);
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 3%;
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        .plus_box{
+          background-color: rgb(210, 100, 237);
+          position: absolute;
+          text-align: center;
+          bottom: 0px;
+          width: 100%;
+          height: 45px;
+          padding:5px;
+          box-sizing: border-box;
+        }
+        .plus_box button{
+          background-color: transparent;
+          border:none;
+          font-size: 30px;
+          
+        }
+    </style>
+</head>
+
+<body>
+    <section class="shopping_app">
+        <div class="title">Shopping List</div>
+        <div class="list_box">
+            <ul>
+                <li class="list_title">우유 <span class="list_remove"><i class="fas fa-trash-alt"></i></span></li>
+            </ul>
+        </div>
+        
+        <div class="plus_box">
+            <button onclick="fnc_addList()"><i class="fas fa-plus-circle"></i></button>
+        </div>
+    </section>
+
+
+    <script>
+      function fnc_addList(){
+        const addItem = document.querySelector('.plus_box');
+        addItem.addEventListener('click', ()=>{
+          
+        });
+      }
+    </script>
+
+</body>
+
+</html>
