@@ -4,7 +4,7 @@ export default class Book {
     this.#reservations = [];
   }
 
-  addReservation(customer, isPriority = false) {
+  addReservation(customer) {
     this.#reservations.push(customer);
   }
 
