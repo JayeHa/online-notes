@@ -1,3 +1,5 @@
+// 내부에서 쓰고 있는 컬렉션을 외부에 노출하지 않으며,
+// 클래스 내부 메서드를 통해 컨트롤할 수 있도록 구현해야 합니다.
 export class Person {
   #name;
   #courses;
@@ -11,11 +13,20 @@ export class Person {
   }
 
   get courses() {
-    return this.#courses;
+    return [...this.#courses]; // 복제된 배열을 반환하여 내부 데이터 보호
   }
 
-  set courses(courses) {
-    this.#courses = courses;
+  addCourse(course) {
+    this.#courses.push(course);
+  }
+
+  removeCourse(course, runIfAbsent) {
+    const index = this.#courses.indexOf(course);
+    if (index === -1) {
+      runIfAbsent();
+      return;
+    }
+    this.#courses.splice(index, 1);
   }
 }
 
@@ -36,6 +47,17 @@ export class Course {
   }
 }
 
-const ellie = new Person('엘리');
-ellie.courses.push(new Course('리팩토링', true));
-console.log(ellie.courses.length);
+const ellie = new Person("엘리");
+const course = new Course("리팩토링", true);
+
+ellie.addCourse(course);
+console.log(ellie.courses.length); // 1
+
+ellie.removeCourse(course, () => {
+  console.log("해당 코스는 없다!");
+});
+console.log(ellie.courses.length); // 0
+
+ellie.removeCourse(course, () => {
+  console.log("해당 코스는 없다!"); // "해당 코스는 없다!"
+});
