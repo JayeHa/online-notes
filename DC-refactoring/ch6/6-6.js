@@ -1,10 +1,11 @@
-// 1. 중첩 형태일 경우 깊은 복사 적용 X
-// let defaultOwner = { firstName: "마틴", lastName: "파울러" };
+// 1. 값 캡슐화하기 (복제본 반환)
+let defaultOwnerData = { firstName: "마틴", lastName: "파울러" };
 
-// export function getDefaultOwner() {
-//   return { ...defaultOwner };
+export function _defaultOwner() {
+  return { ...defaultOwnerData }; // 중첩 형태일 경우 깊은 복사 적용 X
+}
 
-// 2. 클래스를 이용하여 변경 여부 설정
+// 2. 클래스를 이용하여 변경 여부 설정 ✨
 export class Person {
   #firstName;
   #lastName;
