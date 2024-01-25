@@ -1,11 +1,11 @@
 # 함수형 프로그래밍과 JavaScript ES6+
 
-<img
-src="./es6_8.jpg"
-width="300"
-/>
-
----
+<a href="https://www.inflearn.com/course/functional-es6/">
+    <img
+    src="./es6_8.jpg"
+    width="300"
+    />
+</a>
 
 ## 강의 노트
 
