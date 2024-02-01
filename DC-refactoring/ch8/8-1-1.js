@@ -1,42 +1,44 @@
+// 각 함수들이 정말로 trackSummary안에서 사용하는 데이터와 밀접하게 관련이 있는 응접도가 높은 상태인지 점검
 export function trackSummary(points) {
-  const totalTime = calculateTime();
-  const totalDistance = calculateDistance();
-  const pace = totalTime / 60 / totalDistance;
+  const time = calculateTime();
+  const distance = calculateDistance(points);
+  const pace = time / 60 / distance;
+
   return {
-    time: totalTime,
-    distance: totalDistance,
-    pace: pace,
+    time,
+    distance,
+    pace,
   };
+}
 
-  function calculateDistance() {
-    let result = 0;
-    for (let i = 1; i < points.length; i++) {
-      result += distance(points[i - 1], points[i]);
-    }
-    return result;
-  }
+function calculateTime() {
+  return 10000;
+}
 
-  function distance(p1, p2) {
-    // 포뮬라: http://www.movable-type.co.uk/scripts/latlong.html
-    const EARTH_RADIUS = 3959; // in miles
-    const dLat = radians(p2.lat) - radians(p1.lat);
-    const dLon = radians(p2.lon) - radians(p1.lon);
-    const a =
-      Math.pow(Math.sin(dLat / 2), 2) +
-      Math.cos(radians(p2.lat)) *
-        Math.cos(radians(p1.lat)) *
-        Math.pow(Math.sin(dLon / 2), 2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return EARTH_RADIUS * c;
+function calculateDistance(points) {
+  let result = 0;
+  for (let i = 1; i < points.length; i++) {
+    result += distance(points[i - 1], points[i]);
   }
+  return result;
+}
 
-  function radians(degrees) {
-    return (degrees * Math.PI) / 180;
-  }
+function distance(p1, p2) {
+  // 포뮬라: http://www.movable-type.co.uk/scripts/latlong.html
+  const EARTH_RADIUS = 3959; // in miles
+  const dLat = radians(p2.lat) - radians(p1.lat);
+  const dLon = radians(p2.lon) - radians(p1.lon);
+  const a =
+    Math.pow(Math.sin(dLat / 2), 2) +
+    Math.cos(radians(p2.lat)) *
+      Math.cos(radians(p1.lat)) *
+      Math.pow(Math.sin(dLon / 2), 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return EARTH_RADIUS * c;
+}
 
-  function calculateTime() {
-    return 10000;
-  }
+function radians(degrees) {
+  return (degrees * Math.PI) / 180;
 }
 
 const newYork = {
