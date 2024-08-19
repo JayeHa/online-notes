@@ -1,8 +1,9 @@
 # CHAPTER 11 API 리펙터링
 
 - [CHAPTER 11 API 리펙터링](#chapter-11-api-리펙터링)
-  - [11.1 질의 함수와 변경 함수 분리하기](#111-질의-함수와-변경-함수-분리하기)
-  - [11.2 함수 매개변수화하기](#112-함수-매개변수화하기)
+    - [11.1 질의 함수와 변경 함수 분리하기](#111-질의-함수와-변경-함수-분리하기)
+    - [11.2 함수 매개변수화하기](#112-함수-매개변수화하기)
+    - [11.3 플래그 인수 제거하기](#113-플래그-인수-제거하기)
 
 ### 11.1 질의 함수와 변경 함수 분리하기
 
@@ -80,4 +81,30 @@ function usd(value) {
     value: value,
   };
 }
+```
+
+### 11.3 플래그 인수 제거하기
+
+[📂 11-3 적용예시](./11-3.js)
+
+```js
+// 예제 1
+function setDimension(name, value) {
+  if (name === "height") {
+    this._height = value;
+    return;
+  }
+  if (name === "width") {
+    this._width = value;
+    return;
+  }
+}
+
+// 예제 2
+class Concert {
+  book(customer, isPremium) {}
+}
+
+// 예제 3
+function setSwitch(on) {}
 ```
