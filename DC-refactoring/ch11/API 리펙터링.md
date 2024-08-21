@@ -6,6 +6,7 @@
   - [11.3 플래그 인수 제거하기](#113-플래그-인수-제거하기)
   - [11.4 객체 통째로 넘기기](#114-객체-통째로-넘기기)
   - [11.5 매개변수를 질의 함수로 바꾸기](#115-매개변수를-질의-함수로-바꾸기)
+  - [11.6 질의 함수를 매개변수로 바꾸기](#116-질의-함수를-매개변수로-바꾸기)
 
 ### 11.1 질의 함수와 변경 함수 분리하기
 
@@ -167,5 +168,19 @@ export class Order {
         return basePrice * 0.9;
     }
   }
+}
+```
+
+### 11.6 질의 함수를 매개변수로 바꾸기
+
+[📂 11-6 적용예시](./11-6.js)
+
+```js
+targetTemperature(aPlan);
+
+// 다른모듈에 있는 함수라고 가정
+function targetTemperature(aPlan) {
+  currentTemperature = thermostat.currentTemperature;
+  // ...
 }
 ```
