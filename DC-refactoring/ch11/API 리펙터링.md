@@ -8,6 +8,7 @@
   - [11.5 매개변수를 질의 함수로 바꾸기](#115-매개변수를-질의-함수로-바꾸기)
   - [11.6 질의 함수를 매개변수로 바꾸기](#116-질의-함수를-매개변수로-바꾸기)
   - [11.7 세터 제거하기](#117-세터-제거하기)
+  - [11.8 생성자를 팩터리 함수로 바꾸기](#118-생성자를-팩터리-함수로-바꾸기)
 
 ### 11.1 질의 함수와 변경 함수 분리하기
 
@@ -194,5 +195,29 @@ function targetTemperature(aPlan) {
 class Person {
   get name() {}
   set name(value) {}
+}
+```
+
+### 11.8 생성자를 팩터리 함수로 바꾸기
+
+[📂 11-8 적용예시](./11-8.js)
+
+```js
+export class Employee {
+  constructor(name, typeCode) {
+    this._name = name;
+    this._typeCode = typeCode;
+  }
+  get name() {
+    return this._name;
+  }
+
+  get type() {
+    return Employee.legalTypeCodes[this._typeCode];
+  }
+
+  static get legalTypeCodes() {
+    return { E: "Engineer", M: "Manager", S: "Salesman" };
+  }
 }
 ```
