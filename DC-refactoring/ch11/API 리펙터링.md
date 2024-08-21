@@ -1,9 +1,10 @@
 # CHAPTER 11 API 리펙터링
 
 - [CHAPTER 11 API 리펙터링](#chapter-11-api-리펙터링)
-    - [11.1 질의 함수와 변경 함수 분리하기](#111-질의-함수와-변경-함수-분리하기)
-    - [11.2 함수 매개변수화하기](#112-함수-매개변수화하기)
-    - [11.3 플래그 인수 제거하기](#113-플래그-인수-제거하기)
+  - [11.1 질의 함수와 변경 함수 분리하기](#111-질의-함수와-변경-함수-분리하기)
+  - [11.2 함수 매개변수화하기](#112-함수-매개변수화하기)
+  - [11.3 플래그 인수 제거하기](#113-플래그-인수-제거하기)
+  - [11.4 객체 통째로 넘기기](#114-객체-통째로-넘기기)
 
 ### 11.1 질의 함수와 변경 함수 분리하기
 
@@ -107,4 +108,33 @@ class Concert {
 
 // 예제 3
 function setSwitch(on) {}
+```
+
+### 11.4 객체 통째로 넘기기
+
+[📂 11-4 적용예시](./11-4.js)
+
+```js
+export function temperatureAlerts(room, plan) {
+  const alerts = [];
+  const low = room.daysTempRange.low;
+  const high = room.daysTempRange.high;
+  if (!plan.withinRange(low, high)) {
+    alerts.push("room temperature went outside range");
+  }
+
+  return alerts;
+}
+
+export class HeatingPlan {
+  constructor(temperatureRange) {
+    this._temperatureRange = temperatureRange;
+  }
+
+  withinRange(bottom, top) {
+    return (
+      bottom >= this._temperatureRange.low && top <= this._temperatureRange.high
+    );
+  }
+}
 ```
