@@ -5,6 +5,7 @@
   - [11.2 함수 매개변수화하기](#112-함수-매개변수화하기)
   - [11.3 플래그 인수 제거하기](#113-플래그-인수-제거하기)
   - [11.4 객체 통째로 넘기기](#114-객체-통째로-넘기기)
+  - [11.5 매개변수를 질의 함수로 바꾸기](#115-매개변수를-질의-함수로-바꾸기)
 
 ### 11.1 질의 함수와 변경 함수 분리하기
 
@@ -135,6 +136,36 @@ export class HeatingPlan {
     return (
       bottom >= this._temperatureRange.low && top <= this._temperatureRange.high
     );
+  }
+}
+```
+
+### 11.5 매개변수를 질의 함수로 바꾸기
+
+[📂 11-5 적용예시](./11-5.js)
+
+```js
+export class Order {
+  constructor(quantity, itemPrice) {
+    this.quantity = quantity;
+    this.itemPrice = itemPrice;
+  }
+
+  get finalPrice() {
+    const basePrice = this.quantity * this.itemPrice;
+    let discountLevel;
+    if (this.quantity > 100) discountLevel = 2;
+    else discountLevel = 1;
+    return this.discountedPrice(basePrice, discountLevel);
+  }
+
+  discountedPrice(basePrice, discountLevel) {
+    switch (discountLevel) {
+      case 1:
+        return basePrice * 0.95;
+      case 2:
+        return basePrice * 0.9;
+    }
   }
 }
 ```
