@@ -10,6 +10,7 @@
   - [11.7 세터 제거하기](#117-세터-제거하기)
   - [11.8 생성자를 팩터리 함수로 바꾸기](#118-생성자를-팩터리-함수로-바꾸기)
   - [11.9 함수를 명령으로 바꾸기](#119-함수를-명령으로-바꾸기)
+  - [11.10 명령을 함수로 바꾸기](#1110-명령을-함수로-바꾸기)
 
 ### 11.1 질의 함수와 변경 함수 분리하기
 
@@ -250,6 +251,26 @@ export function score(candidate, medicalExam, scoringGuide) {
 export class ScoringGuide {
   stateWithLowCertification(state) {
     return state < 5;
+  }
+}
+```
+
+### 11.10 명령을 함수로 바꾸기
+
+[📂 11-10 적용예시](./11-10.js)
+
+```js
+export class ChargeCalculator {
+  constructor(customer, usage, provider) {
+    this._customer = customer;
+    this._usage = usage;
+    this._provider = provider;
+  }
+  get baseCharge() {
+    return this._customer.baseRate * this._usage;
+  }
+  get charge() {
+    return this.baseCharge + this._provider.connectionCharge;
   }
 }
 ```
