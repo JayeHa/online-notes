@@ -12,6 +12,7 @@
   - [11.9 함수를 명령으로 바꾸기](#119-함수를-명령으로-바꾸기)
   - [11.10 명령을 함수로 바꾸기](#1110-명령을-함수로-바꾸기)
   - [11.11 수정된 값 반환하기](#1111-수정된-값-반환하기)
+  - [11.12 오류 코드를 예외로 바꾸기](#1112-오류-코드를-예외로-바꾸기)
 
 ### 11.1 질의 함수와 변경 함수 분리하기
 
@@ -293,5 +294,16 @@ export function ascentVelocity(points, totalMinutes) {
   calculateAscent([{ elevation: 10 }, { elevation: 20 }]);
 
   return totalAscent / totalMinutes;
+}
+```
+
+### 11.12 오류 코드를 예외로 바꾸기
+
+[📂 11-12 적용예시](./11-12.js)
+
+```js
+function localShippingRules(data) {
+  if (data) return new ShippingRules(data);
+  else return -23;
 }
 ```
