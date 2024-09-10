@@ -13,6 +13,7 @@
   - [11.10 명령을 함수로 바꾸기](#1110-명령을-함수로-바꾸기)
   - [11.11 수정된 값 반환하기](#1111-수정된-값-반환하기)
   - [11.12 오류 코드를 예외로 바꾸기](#1112-오류-코드를-예외로-바꾸기)
+  - [11.13 예외를 사전확인으로 바꾸기](#1113-예외를-사전확인으로-바꾸기)
 
 ### 11.1 질의 함수와 변경 함수 분리하기
 
@@ -305,5 +306,26 @@ export function ascentVelocity(points, totalMinutes) {
 function localShippingRules(data) {
   if (data) return new ShippingRules(data);
   else return -23;
+}
+```
+
+### 11.13 예외를 사전확인으로 바꾸기
+
+[📂 11-13 적용예시](./11-13.js)
+
+```js
+const values = [];
+function getValueForPeriod(periodNumber) {
+  const value = values[periodNumber];
+  if (!value) {
+    throw new Error("value is undefined");
+  }
+  return value;
+}
+
+try {
+  getValueForPeriod(-10);
+} catch (error) {
+  console.log("에러 발생!");
 }
 ```
