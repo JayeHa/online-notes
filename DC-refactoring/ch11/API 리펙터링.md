@@ -11,6 +11,7 @@
   - [11.8 생성자를 팩터리 함수로 바꾸기](#118-생성자를-팩터리-함수로-바꾸기)
   - [11.9 함수를 명령으로 바꾸기](#119-함수를-명령으로-바꾸기)
   - [11.10 명령을 함수로 바꾸기](#1110-명령을-함수로-바꾸기)
+  - [11.11 수정된 값 반환하기](#1111-수정된-값-반환하기)
 
 ### 11.1 질의 함수와 변경 함수 분리하기
 
@@ -272,5 +273,25 @@ export class ChargeCalculator {
   get charge() {
     return this.baseCharge + this._provider.connectionCharge;
   }
+}
+```
+
+### 11.11 수정된 값 반환하기
+
+[📂 11-11 적용예시](./11-11.js)
+
+```js
+export function ascentVelocity(points, totalMinutes) {
+  function calculateAscent() {
+    for (let i = 1; i < points.length; i++) {
+      const verticalChange = points[i].elevation - points[i - 1].elevation;
+      totalAscent += verticalChange > 0 ? verticalChange : 0;
+    }
+  }
+
+  let totalAscent = 0;
+  calculateAscent([{ elevation: 10 }, { elevation: 20 }]);
+
+  return totalAscent / totalMinutes;
 }
 ```
