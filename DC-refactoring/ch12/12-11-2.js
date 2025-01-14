@@ -18,14 +18,27 @@ class CatalogItem {
   }
 }
 
-class Scroll extends CatalogItem {
-  constructor(id, title, tags, dataLastCleaned) {
-    super(id, title, tags);
+class Scroll {
+  constructor(id, dataLastCleaned, catalogItem) {
+    this._id = id;
     this._lastCleaned = dataLastCleaned;
+    this._catalogItem = catalogItem;
+  }
+
+  get id() {
+    return this.id;
+  }
+
+  get title() {
+    return this._catalogItem.title;
+  }
+
+  hasTag(aString) {
+    return this._catalogItem.tags.hasTag(aString);
   }
 
   needsCleaning(targetDate) {
-    const threshold = this.hasTag('revered') ? 700 : 1500;
+    const threshold = this.hasTag("revered") ? 700 : 1500;
 
     return this.daysSinceLastCleaning(targetDate) > threshold;
   }
@@ -34,3 +47,13 @@ class Scroll extends CatalogItem {
     return this._lastCleaned.until(targetDate, ChronoUnit.DAYS);
   }
 }
+
+const scrolls = aDocument.map(
+  (record) =>
+    new Scroll(
+      record.id,
+      LocalDate.parse(record.lastCleaned),
+      record.catalogData.id,
+      catalog
+    )
+);
