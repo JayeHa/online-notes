@@ -2,11 +2,6 @@ export function statement(invoice, plays) {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `청구 내역 (고객명: ${invoice.customer})\n`;
-  const format = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 2,
-  }).format;
 
   for (let perf of invoice.performances) {
     const play = plays[perf.playID];
@@ -46,6 +41,14 @@ export function statement(invoice, plays) {
   return result;
 }
 
+function format(number) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+  }).format(number);
+}
+
 // 사용예:
 const playsJSON = {
   hamlet: { name: "Hamlet", type: "tragedy" },
@@ -81,5 +84,6 @@ const expected =
   "  Othello: $500.00 (40석)\n" +
   "총액: $1,730.00\n" +
   "적립 포인트: 47점\n";
+
 console.log(result);
 console.log(result === expected);
